@@ -1,0 +1,11 @@
+{% extends "baseS.html" %}
+{% block title %}QuizEase - Student{% endblock %}
+{% load static %}
+{% block content %}
+
+    <h1> Hello, Student! </h1>
+    <button type="button" class="btn" onclick="window.location.href=`{% url 'joinQuiz' %}`">Join quiz</button>
+    <button type="button" class="btn" onclick="window.location.href=`{% url 'completedQuizzes' %}`">Completed quizzies</button>
+    <button type="button" class="btn" onclick="window.location.href=`{% url 'logout' %}`">Logout</button>
+
+{% endblock %}

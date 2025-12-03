@@ -1,0 +1,11 @@
+{% extends "baseP.html" %}
+{% block title %}QuizEase - Profesor{% endblock %}
+{% load static %}
+{% block content %}
+
+    <h1> Hello, Profesor! </h1>
+    <button type="button" class="btn" onclick="window.location.href=`{% url 'createQuiz' %}`">Create quiz</button>
+    <button type="button" class="btn" onclick="window.location.href=`{% url 'viewQuizzes' %}`">View quizzies</button>
+    <button type="button" class="btn" onclick="window.location.href=`{% url 'logout' %}`">Logout</button>
+
+{% endblock %}
