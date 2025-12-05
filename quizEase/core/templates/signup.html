@@ -1,16 +1,55 @@
 {% extends "base.html" %}
-{% block title %}QuizEase{% endblock %}
 {% load static %}
+
+{% block title %}QuizEase - Create Account{% endblock %}
+
 {% block content %}
 
-    <h1>Create account</h1>
+    <h2 class="auth-title">Create account</h2>
 
-    <form action="" method="post">
+    <form method="post" class="auth-form">
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" class="btn" value="Create acount"></input>
+        
+        {% if form.non_field_errors %}
+            <div class="form-errors">
+                {% for error in form.non_field_errors %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <div class="form-group">
+            <input type="email" 
+                   name="email" 
+                   class="form-control-custom" 
+                   placeholder="email" 
+                   required>
+            
+            {% if form.email.errors %}
+                <div style="color: #ffdddd; font-size: 12px; margin-top: 5px;">
+                    {{ form.email.errors.0 }}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <input type="password" 
+                   name="password" 
+                   class="form-control-custom" 
+                   placeholder="password" 
+                   required>
+        </div>
+
+        <div class="form-group mb-large">
+            <input type="password" 
+                   name="confirm_password" 
+                   class="form-control-custom" 
+                   placeholder="confirm password" 
+                   required>
+        </div>
+
+        <button type="submit" class="btn-custom">Create account</button>
+        
     </form>
-
-
 
 {% endblock %}

@@ -1,0 +1,164 @@
+/* =========================================
+   1. SETĂRI GLOBALE & FUNDAL (Gradientul Tău)
+   ========================================= */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font modern, curat */
+    /* Gradientul cerut de tine: de la #98D3AC la #BEE6D8 */
+    background: linear-gradient(180deg, #98D3AC 0%, #BEE6D8 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white; /* Text alb implicit */
+}
+
+/* Containerul principal - ACUM TRANSPARENT */
+#content {
+    background-color: transparent; /* IMPORTANT: Fără fundal alb */
+    box-shadow: none;              /* Fără umbră */
+    border: none;
+    
+    /* Centrare perfectă pe ecran */
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+}
+
+/* =========================================
+   2. TYPOGRAPHY (Scrisul)
+   ========================================= */
+h1, h2, h3 {
+    color: white;
+    font-weight: 500; /* Semi-bold, elegant */
+    margin-bottom: 30px;
+    letter-spacing: 0.5px;
+}
+
+/* Etichetele formularelor (ex: "email", "password") */
+label {
+    color: #f0f0f0;
+    font-weight: 300;
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
+    text-align: left; /* Aliniate la stânga inputului */
+    width: 100%;
+}
+
+/* =========================================
+   3. INPUT-URI (Câmpurile de text)
+   ========================================= */
+/* Stilul specific din poze: doar o linie jos, fundal transparent */
+.form-control-custom {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6); /* Linie fină albă */
+    border-radius: 0;
+    box-shadow: none;
+    color: white;
+    width: 300px; /* Lățime fixă pentru aspectul centrat */
+    padding: 10px 5px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    outline: none; /* Scoate conturul albastru la click */
+}
+
+.form-control-custom:focus {
+    border-bottom: 1px solid white; /* Devine alb complet când scrii */
+    background: transparent;
+    outline: none;
+}
+
+/* Placeholder (textul ajutător) */
+::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 300;
+}
+
+/* =========================================
+   4. BUTOANELE (Stilul "Pastilă")
+   ========================================= */
+.btn-custom {
+    background-color: white;
+    /* Culoarea Mov extrasă din imaginea ta ("Create account") */
+    color: #582C5D; 
+    
+    border: none;
+    border-radius: 50px; /* Rotunjire maximă (pill shape) */
+    padding: 12px 0;     /* Înălțime buton */
+    width: 300px;        /* Aceeași lățime ca input-urile */
+    font-size: 16px;
+    font-weight: 700;    /* Bold */
+    margin-top: 20px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-custom:hover {
+    background-color: #f9f9f9;
+    transform: translateY(-2px); /* Se ridică puțin la hover */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    color: #582C5D;
+    text-decoration: none;
+}
+
+/* Logo-ul din pagina principală */
+.hero-logo {
+    width: 80px; /* Ajustează mărimea după preferință */
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.app-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2F4F4F; /* Un verde foarte închis/gri pentru titlul "Quiz Ease" sub logo */
+    margin-bottom: 40px;
+}
+
+
+
+
+
+/* Stilul pentru Input-uri */
+.form-control-custom {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 0;
+    color: white; /* Culoarea textului scris de utilizator */
+    width: 300px;
+    padding: 10px 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+/* MODIFICARE NOUĂ: Stilul pentru Placeholder (textul de fundal) */
+/* Acesta este textul "email" sau "password" înainte să scrii */
+::placeholder {
+    color: rgba(255, 255, 255, 0.7); /* Alb cu transparență 70% */
+    font-weight: 300; /* Scris mai subțire */
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Când dai click pe input, linia de jos devine alb complet */
+.form-control-custom:focus {
+    border-bottom: 1px solid #ffffff;
+}
+
+/* ... restul codului ... */
+
+/* Logo-ul de pe pagina principală */
+.hero-logo {
+    width: 250px;        /* Ajustează mărimea (80px - 120px e ideal) */
+    margin-bottom: 20px; /* Spațiu între logo și text/butoane */
+    display: block;      /* Se comportă ca un bloc */
+    margin-left: auto;   /* Centrare orizontală */
+    margin-right: auto;  /* Centrare orizontală */
+}

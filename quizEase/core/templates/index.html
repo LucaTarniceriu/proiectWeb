@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 {% block title %}QuizEase{% endblock %}
 {% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'core/style.css' %}">
 {% block content %}
 
-    <img src="{% static logo.png %}" alt="logo">
-    <button type="button" class="btn" onclick="window.location.href=`{% url 'signup' %}`">Create account</button>
-    <button type="button" class="btn" onclick="window.location.href=`{% url 'login' %}`">Login</button>
+    <img src="{% static 'core/images/logo.png' %}" alt="QuizEase Logo" class="hero-logo">
+    <button type="button" class="btn-custom" onclick="window.location.href=`{% url 'signup' %}`">Create account</button>
+    <button type="button" class="btn-custom" onclick="window.location.href=`{% url 'login' %}`">Login</button>
 
 {% endblock %}
