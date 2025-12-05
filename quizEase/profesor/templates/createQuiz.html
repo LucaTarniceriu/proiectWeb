@@ -1,0 +1,76 @@
+{% extends "baseP.html" %}
+{% block title %}QuizEase - Create quiz{% endblock %}
+{% load static %}
+{% block content %}
+
+     <h2 class="auth-title">Create quiz</h2>
+
+     <form method="post" class=" ">
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+            <div class="form-errors">
+                {% for error in form.non_field_errors %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <div class="form-group">
+            <input type="text"
+                   name="quiz_title"
+                   id="id_quiz_title"
+                   class="form-control-custom"
+                   placeholder="Quiz title"
+                   required>
+        </div>
+
+        <div class="form-group">
+            <input type="text"
+                   name="quiz_subject"
+                   id="id_quiz_subject"
+                   class="form-control-custom"
+                   placeholder="Quiz subject">
+        </div>
+
+        <div class="form-group">
+            <input type="text"
+                   name="quiz_instructions"
+                   id="id_quiz_instructions"
+                   class="form-control-custom"
+                   placeholder="Instructions">
+        </div>
+
+        <div class="form-group">
+            <input type="radio"
+                   name="quiz_show_grade"
+                   id="id_show_grade"
+                   class="form-control-custom"
+                   value="show_grade">
+            <label>show grade after submit</label>
+        </div>
+
+        <div class="form-group">
+            <input type="radio"
+                   name="quiz_show_grade"
+                   id="id_hide_grade"
+                   class="form-control-custom"
+                   value="hide_grade">
+            <label>show grade after check</label>
+        </div>
+
+         <div class="form-group">
+            <input type="checkbox"
+                   name="quiz_allow_return"
+                   id="id_allow_return"
+                   class="form-control-custom"
+                   value="allow_return">
+            <label>allow return to previous questions</label>
+        </div>
+
+
+        <button type="submit" class="btn-custom">Add questions</button>
+
+    </form>
+
+{% endblock %}
