@@ -1,16 +1,43 @@
 {% extends "base.html" %}
-{% block title %}QuizEase{% endblock %}
 {% load static %}
+
+{% block title %}QuizEase - Login{% endblock %}
+
 {% block content %}
 
-    <h1>Login</h1>
+    <h2 class="auth-title">Login</h2>
 
-    <form action="" method="post">
+    <form method="post" class="auth-form">
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" class="btn" value="Login"></input>
+        
+        {% if form.non_field_errors %}
+            <div class="form-errors">
+                {% for error in form.non_field_errors %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <div class="form-group">
+            <input type="text" 
+                   name="username" 
+                   id="id_username" 
+                   class="form-control-custom" 
+                   placeholder="email" 
+                   required>
+        </div>
+
+        <div class="form-group mb-large">
+            <input type="password" 
+                   name="password" 
+                   id="id_password" 
+                   class="form-control-custom" 
+                   placeholder="password" 
+                   required>
+        </div>
+
+        <button type="submit" class="btn-custom">Login</button>
+        
     </form>
-
-
 
 {% endblock %}
