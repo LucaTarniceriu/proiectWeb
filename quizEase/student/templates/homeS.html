@@ -1,11 +1,15 @@
 {% extends "baseS.html" %}
-{% block title %}QuizEase - Student{% endblock %}
+{% block title %}QuizEase - Home{% endblock %}
 {% load static %}
 {% block content %}
+<div class="home-container">
+    <h1> Hello, {{nameStr}}! </h1>
+    <div class="button-group">
+        <a class="btn-custom" href="{% url 'joinQuiz' %}">Join quiz</a>
+        <a class="btn-custom" href="{% url 'completedQuizzes' %}">Completed quizzies</a>
+        <a class="btn-custom" href="{% url 's_logout' %}">Logout</a>
+    </div>
 
-    <h1> Hello, Student! </h1>
-    <button type="button" class="btn" onclick="window.location.href=`{% url 'joinQuiz' %}`">Join quiz</button>
-    <button type="button" class="btn" onclick="window.location.href=`{% url 'completedQuizzes' %}`">Completed quizzies</button>
-    <button type="button" class="btn" onclick="window.location.href=`{% url 's_logout' %}`">Logout</button>
+</div>
 
 {% endblock %}

@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from .forms import SignupForm, LoginForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import get_user_model
+User = get_user_model()
 import re
 
 # Create your views here.
@@ -9,24 +11,65 @@ def welcome(request):
     return render(request, "index.html")
 
 def signup(request):
+    customErrors = []
     if request.method == "POST":
         email = request.POST["email"]
         password = request.POST["password"]
         passwordCheck = request.POST["passwordCheck"]
 
+        if passwordCheck == password:
+            pass
+        else:
+            customErrors.append("passwords dont match")
+
+
+        if re.search("[a-z]+\.[a-z]+[0-9]{2}@e-uvt\.ro", email):
+            if passwordCheck == password:
+                if User.objects.create_user(username=email, email=email, password=password, isProfesor = False):
+                    return redirect('login_user')
+        elif re.search("[a-z]+\.[a-z]+@e-uvt\.ro", email):
+            if passwordCheck == password:
+                if User.objects.create_user(username=email, email=email, password=password, isProfesor = True):
+                    return redirect('login_user')
+        else:
+            customErrors.append("provided email not part of institutional group")
+
+
+
+
     context = {}
     context['form'] = SignupForm()
+    context['customErrors'] = customErrors
     return render(request, "signup.html", context)
 
-def login(request):
+def login_user(request):
+    customErrors = []
     if request.method == "POST":
         email = request.POST["email"]
         password = request.POST["password"]
-
-        if re.search("[a-z]+\.[a-z]+[0-9]{2}@e-uvt\.ro", email):
-            return redirect("/student")
-        elif re.search("[a-z]+\.[a-z]+@e-uvt\.ro", email):
-            return redirect("/profesor")
+        logout(request)
+        user = authenticate(username=email, password=password)
+        if user is not None:
+            login(request, user)
+            if re.search("[a-z]+\.[a-z]+[0-9]{2}@e-uvt\.ro", email):
+                return redirect("/student")
+            elif re.search("[a-z]+\.[a-z]+@e-uvt\.ro", email):
+                return redirect("/profesor")
+            else:
+                customErrors.append("provided email not part of institutional group")
         else:
-            print("email invalid")
-    return render(request, "login.html")
+            customErrors.append("email or password are incorrect")
+
+    context = {}
+    context['form'] = SignupForm()
+    context['customErrors'] = customErrors
+    return render(request, "login.html", context)
+
+def error(request, error_id):
+    context = {}
+    if error_id == "permission_err":
+        context['errorMessage'] = "You are not logged in with the right permissions to access this page"
+    if error_id == "no_login":
+        context['errorMessage'] = "You are not logged in"
+
+    return render(request, "error.html", context)

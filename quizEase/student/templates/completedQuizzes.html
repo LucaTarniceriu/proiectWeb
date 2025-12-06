@@ -1,4 +1,4 @@
-{% extends "baseP.html" %}
+{% extends "baseS.html" %}
 {% block title %}QuizEase - View quizzes{% endblock %}
 {% load static %}
 {% block content %}
@@ -7,7 +7,7 @@
 
 <!--  loop trough created quizzes database and show each one   -->
 
-    <button type="button" class="btn" onclick="window.location.href=`{% url 'joinQuiz' %}`">Join quiz</button>
-    <button type="button" class="btn" onclick="window.location.href=`{% url 'p_home' %}`">Home</button>
+    <a class="btn-custom" href="{% url 'joinQuiz' %}">Join quiz</a>
+    <a class="btn-custom" href="{% url 's_home' %}">Home</a>
 
 {% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Error{% endblock %}
+{% load static %}
+
+
+{% block content %}
+
+
+    <div class="errorMessage">
+        {{ errorMessage }}
+    </div>
+    <button type="button" class="btn-custom" onclick="window.location.href=`{% url 'login_user' %}`">Login</button>
+
+{% endblock %}

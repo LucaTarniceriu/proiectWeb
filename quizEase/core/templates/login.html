@@ -18,6 +18,14 @@
             </div>
         {% endif %}
 
+         {% if customErrors %}
+            <div class="form-errors">
+                {% for error in customErrors %}
+                    ⚠ {{ error }} <br>
+                {% endfor %}
+            </div>
+        {% endif %}
+
         <div class="form-group">
             <input type="text" 
                    name="email"
