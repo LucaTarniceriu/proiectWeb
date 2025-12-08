@@ -6,7 +6,7 @@
 {% block content %}
 
     <img src="{% static 'images/logo.png' %}" alt="QuizEase Logo" class="hero-logo">
-    <button type="button" class="btn-custom" onclick="window.location.href=`{% url 'signup' %}`">Create account</button>
-    <button type="button" class="btn-custom" onclick="window.location.href=`{% url 'login_user' %}`">Login</button>
+    <a href="{% url 'signup' %}" class="btn-custom">Create account</a>
+    <a href="{% url 'login_user' %}" class="btn-custom">Login</a>
 
 {% endblock %}

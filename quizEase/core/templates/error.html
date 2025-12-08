@@ -9,6 +9,6 @@
     <div class="errorMessage">
         {{ errorMessage }}
     </div>
-    <button type="button" class="btn-custom" onclick="window.location.href=`{% url 'login_user' %}`">Login</button>
+    <a href="{% url 'login_user' %}" class="btn-custom">Login</a>
 
 {% endblock %}
