@@ -82,7 +82,7 @@ def addQuestion(request, questionNumber):
 def viewQuizzes(request):
     if request.user.is_authenticated and request.user.isProfesor:
         context = {}
-        context['quizDatabase'] = Quiz.objects.all()
+        context['quizDatabase'] = Quiz.objects.filter(createdBy=request.user)
         return render(request, 'viewQuizzes.html', context)
     else:
         return redirect('error', error_id='permission_err')
