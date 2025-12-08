@@ -69,7 +69,13 @@ def error(request, error_id):
     context = {}
     if error_id == "permission_err":
         context['errorMessage'] = "You are not logged in with the right permissions to access this page"
-    if error_id == "no_login":
+    elif error_id == "no_login":
         context['errorMessage'] = "You are not logged in"
+    elif error_id == "quiz_submission_err":
+        context['errorMessage'] = "Quiz submission failed"
+    elif error_id == "no_active_quiz":
+        context['errorMessage'] = "No active quiz"
+    else:
+        context['errorMessage'] = "Error: something went wrong"
 
     return render(request, "error.html", context)
