@@ -172,3 +172,18 @@ button{
     margin-left: auto;   /* Centrare orizontală */
     margin-right: auto;  /* Centrare orizontală */
 }
+
+.button-group {
+    display: flex;
+    flex-direction: column;    /* Mobil: Coloană */
+    gap: 20px;
+    align-items: center;
+}
+
+/* === MEDIA QUERY (Pentru Laptop > 992px) === */
+@media (min-width: 992px) {
+    .button-group {
+        flex-direction: row;   /* Laptop: Linie */
+        gap: 50px;             /* Distanță mare între ele */
+    }
+}
