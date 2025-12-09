@@ -9,7 +9,7 @@ body, html {
     background: linear-gradient(180deg, #98D3AC 0%, #BEE6D8 100%);
     background-repeat: no-repeat;
     background-attachment: fixed;
-    color: white; /* Text alb implicit */
+    color: #582C5D; /* Text alb implicit */
 }
 
 /* Containerul principal - ACUM TRANSPARENT */
@@ -31,7 +31,7 @@ body, html {
    2. TYPOGRAPHY (Scrisul)
    ========================================= */
 h1, h2, h3 {
-    color: white;
+    color: #582C5D;
     font-weight: 500; /* Semi-bold, elegant */
     margin-bottom: 30px;
     letter-spacing: 0.5px;
@@ -58,7 +58,7 @@ label {
     border-bottom: 1px solid rgba(255, 255, 255, 0.6); /* Linie fină albă */
     border-radius: 0;
     box-shadow: none;
-    color: white;
+    color: #582C5D;
     width: 500px; /* Lățime fixă pentru aspectul centrat */
     padding: 10px 5px;
     margin-bottom: 20px;
@@ -140,9 +140,9 @@ button{
 .form-control-custom {
     background: transparent;
     border: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+    border-bottom: 1px solid rgb(106, 106, 106);
     border-radius: 0;
-    color: white; /* Culoarea textului scris de utilizator */
+    color: #582C5D; /* Culoarea textului scris de utilizator */
     width: 500px;
     padding: 10px 5px;
     font-size: 16px;
@@ -152,14 +152,14 @@ button{
 /* MODIFICARE NOUĂ: Stilul pentru Placeholder (textul de fundal) */
 /* Acesta este textul "email" sau "password" înainte să scrii */
 ::placeholder {
-    color: rgba(255, 255, 255, 0.7); /* Alb cu transparență 70% */
+    color: #582C5D; /* Alb cu transparență 70% */
     font-weight: 300; /* Scris mai subțire */
     font-family: 'Segoe UI', sans-serif;
 }
 
 /* Când dai click pe input, linia de jos devine alb complet */
 .form-control-custom:focus {
-    border-bottom: 1px solid #ffffff;
+    border-bottom: 1px solid #582C5D;
 }
 
 /* ... restul codului ... */
