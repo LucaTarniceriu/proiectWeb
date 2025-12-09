@@ -185,5 +185,5 @@ button{
     .button-group {
         flex-direction: row;   /* Laptop: Linie */
         gap: 50px;             /* Distanță mare între ele */
-    }
+    } 
 }
