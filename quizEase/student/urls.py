@@ -6,5 +6,6 @@ urlpatterns = [
     path('s_home/', views.s_home, name='s_home'),
     path('joinQuiz/', views.joinQuiz, name='joinQuiz'),
     path('completedQuizzes/', views.completedQuizzes, name='completedQuizzes'),
+    path('activeQuiz/', views.activeQuiz, name='activeQuiz'),
     path('s_logout/', views.s_logout, name='s_logout'),
 ]

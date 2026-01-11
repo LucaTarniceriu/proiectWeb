@@ -7,12 +7,16 @@ class CustomUserAdmin(UserAdmin):
     fieldsets = UserAdmin.fieldsets + (
         (None, {'fields': ('isProfesor',)}),
         (None, {'fields': ('activeQuiz',)}),
+        (None, {'fields': ('activeQuestion',)}),
+        (None, {'fields': ('finishedQuizzes',)}),
     )
 
     # Add your custom field to the add_fieldsets (for creating a user)
     add_fieldsets = UserAdmin.add_fieldsets + (
         (None, {'fields': ('isProfesor',)}),
         (None, {'fields': ('activeQuiz',)}),
+        (None, {'fields': ('activeQuestion',)}),
+        (None, {'fields': ('finishedQuizzes',)}),
     )
 
     # Optional: show it in the list display

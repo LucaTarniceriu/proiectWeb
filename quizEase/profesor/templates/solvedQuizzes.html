@@ -1,0 +1,19 @@
+{% extends "baseP.html" %}
+{% block title %}QuizEase - Students{% endblock %}
+{% load static %}
+{% block content %}
+
+     <h2 class="auth-title">Students</h2>
+
+    {% for student in studentDatabase %}
+
+            <div class="form-group">
+                <p>{{ student }} ({{grade}}p)</p>
+            </div>
+        <br><br>
+    {% endfor %}
+
+
+    <a class="btn-custom" href="{% url 'p_home' %}">Home</a>
+
+{% endblock %}

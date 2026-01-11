@@ -1,0 +1,31 @@
+{% extends "baseS.html" %}
+{% block title %}QuizEase - {{title}}{% endblock %}
+{% load static %}
+{% block content %}
+    {% if questionNo == 0 %}
+        <h2 class="auth-title">{{title}}</h2>
+    {% else %}
+        <h2 class="auth-title">Question {{questionNo}}</h2>
+    {% endif %}
+
+    <div class="instructions">{{instructions}}</div>
+    <div class="question">{{question}}</div>
+
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="source" value="nextQ" hidden>
+        {% for option in answer %}
+            <label for="{{option}}" class="answers" style="display: block">{{option}}
+            <input type="checkbox" name="answers" style="display: span" id="{{option}}" value="{{option}}">
+            </label>
+        {% endfor %}
+
+        <input type="submit" class="btn-custom" name="submit" value="{{button}}">
+        {% if questionNo != 0 and questionNo != 1 and allowReturn == True %}
+        <input type="submit" class="btn-custom" name="submit" value="Previous Question">
+        {% endif %}
+    </form>
+        <a class="btn-custom" href="{% url 's_home' %}">Home</a>
+
+{% endblock %}

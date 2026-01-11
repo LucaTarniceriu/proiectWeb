@@ -8,6 +8,8 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     isProfesor = models.BooleanField(default=False)
     activeQuiz = models.CharField() # id of quiz that is currently editing or answering
+    activeQuestion = models.CharField() # id of question that is currently editing or answering
+    finishedQuizzes = models.CharField(blank=True)
 
 
 class Quiz(models.Model):
@@ -17,7 +19,7 @@ class Quiz(models.Model):
     instructions = models.CharField(max_length=500)
     showGrade = models.CharField(max_length=100, default="show_grade")
     allowReturn = models.CharField(max_length=100, default="allow_return")
-    # createdBy = models.CharField(max_length=100) # email of profesor
+    nrOfQuestions = models.IntegerField()
     createdBy = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
@@ -33,6 +35,7 @@ class Question(models.Model):
 class Submits(models.Model):
     id = models.AutoField(primary_key=True)
     student = models.CharField(max_length=100) # email of student
-    quizId = models.IntegerField() # id of the answered quiz
-    answers = models.CharField(max_length=100) # String of answer indexes (ex. a,b;a;c,d; -> question1: a and b; question2: a; question3: c and d)
-    grade = models.CharField(max_length=5) # value of final grade
+    question_id = models.CharField(max_length=100)
+    quiz_id = models.CharField(max_length=100)
+    answers = models.CharField(max_length=1000) # String of answers, separated by ";"
+    points = models.IntegerField()

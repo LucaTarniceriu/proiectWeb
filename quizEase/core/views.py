@@ -75,6 +75,8 @@ def error(request, error_id):
         context['errorMessage'] = "Quiz submission failed"
     elif error_id == "no_active_quiz":
         context['errorMessage'] = "No active quiz"
+    elif error_id == "already_responded":
+        context['errorMessage'] = "Quiz was already sent"
     else:
         context['errorMessage'] = "Error: something went wrong"
 

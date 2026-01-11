@@ -5,7 +5,9 @@
 
      <h2 class="auth-title">Quizzes</h2>
 
-<!--  loop trough created quizzes database and show each one   -->
+    {% for quiz in quizzes %}
+        <h3>{{quiz}} ({{grade}}p)</h3>
+    {% endfor %}
 
     <a class="btn-custom" href="{% url 'joinQuiz' %}">Join quiz</a>
     <a class="btn-custom" href="{% url 's_home' %}">Home</a>

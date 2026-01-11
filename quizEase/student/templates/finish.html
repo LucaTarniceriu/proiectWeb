@@ -1,0 +1,13 @@
+{% extends "baseS.html" %}
+{% block title %}QuizEase - Quiz finished{% endblock %}
+{% load static %}
+{% block content %}
+
+     <h2 class="auth-title">Quiz finished</h2>
+     {% if grade != "not_allowed" %}
+        <h3>Your grade: {{ grade }}</h3>
+
+
+    <a class="btn-custom" href="{% url 's_home' %}">Home</a>
+
+{% endblock %}

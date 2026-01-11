@@ -10,4 +10,5 @@ urlpatterns = [
     path('p_logout/', views.p_logout, name='p_logout'),
 
     path('delete_quiz/<int:quiz_id>/', views.deleteQuiz, name='deleteQuiz'),
+    path('solvedQuizzes/<str:quiz_id>/', views.solvedQuizzes, name='solvedQuizzes'),
 ]

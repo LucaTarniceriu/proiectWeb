@@ -39,7 +39,7 @@ h1, h2, h3 {
 
 /* Etichetele formularelor (ex: "email", "password") */
 label {
-    color: #f0f0f0;
+    color: #582C5D;
     font-weight: 300;
     font-size: 14px;
     margin-bottom: 5px;
@@ -89,7 +89,7 @@ button{
     align-self: center;
 }
 /* =========================================
-   4. BUTOANELE (Stilul "Pastilă")
+   4. BUTOANELE
    ========================================= */
 .btn-custom {
     background-color: white;
@@ -186,4 +186,13 @@ button{
         flex-direction: row;   /* Laptop: Linie */
         gap: 50px;             /* Distanță mare între ele */
     } 
+}
+
+
+.answers{
+    display: block;
+}
+
+.btn_icon{
+    width: 40%;
 }

@@ -6,7 +6,8 @@
      <h2 class="auth-title">Join quiz</h2>
 
 
-    <form method="post" class=" ">
+    <form method="post" class=" " action="{% url 'activeQuiz' %}">
+        <input type="text" name="source" value="join" hidden>
         {% csrf_token %}
 
         {% if form.non_field_errors %}
