@@ -6,6 +6,7 @@
      <h2 class="auth-title">Quiz finished</h2>
      {% if grade != "not_allowed" %}
         <h3>Your grade: {{ grade }}</h3>
+    {% endif %}
 
 
     <a class="btn-custom" href="{% url 's_home' %}">Home</a>
