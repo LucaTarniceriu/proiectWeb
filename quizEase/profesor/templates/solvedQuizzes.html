@@ -5,12 +5,10 @@
 
      <h2 class="auth-title">Students</h2>
 
-    {% for student in studentDatabase %}
 
-            <div class="form-group">
-                <p>{{ student }} ({{grade}}p)</p>
-            </div>
-        <br><br>
+
+    {% for key, value in studentDatabase.items %}
+        <p>{{ key }} ({{ value }}p)</p>
     {% endfor %}
 
 

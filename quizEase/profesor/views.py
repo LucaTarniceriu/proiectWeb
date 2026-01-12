@@ -117,18 +117,18 @@ def viewQuizzes(request):
 # vizualizarea studentilor care au trimis un anumit quiz
 def solvedQuizzes(request, quiz_id):
     if request.user.is_authenticated and request.user.isProfesor:
-        context = {"studentDatabase": []}
+        context = {"studentDatabase": {}}
         students = User.objects.filter(isProfesor=False)
         for student in students:
             if quiz_id in student.finishedQuizzes.split(';'):
                 # selectarea tuturor studentilor care au trimis quiz-ul cu id-ul quizului selectat
                 name = student.username.split("@")[0].split(".")
-                context['studentDatabase'].append(name[1].title()[:-2] + " " + name[0].title())
-                context["grade"] = 0
+                grade = 0
                 submissions = Submits.objects.filter(student=student.username, quiz_id=quiz_id)
                 for entry in submissions:
                     # calcularea notei studentului
-                    context["grade"] += entry.points
+                    grade += entry.points
+                context['studentDatabase'][(name[1].title()[:-2] + " " + name[0].title())] = grade
         return render(request, 'solvedQuizzes.html', context)
     else:
         return redirect('error', error_id='permission_err')

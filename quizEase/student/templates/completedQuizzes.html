@@ -5,8 +5,8 @@
 
      <h2 class="auth-title">Quizzes</h2>
 
-    {% for quiz in quizzes %}
-        <h3>{{quiz}} ({{grade}}p)</h3>
+    {% for key, value in quizzes.items %}
+        <h3>{{ key }} ({{ value }}p)</h3>
     {% endfor %}
 
     <a class="btn-custom" href="{% url 'joinQuiz' %}">Join quiz</a>

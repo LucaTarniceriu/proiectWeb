@@ -141,13 +141,13 @@ def activeQuiz(request):
                         request.user.finishedQuizzes += (str(quiz.id) + ";")
                         request.user.save()
                         # daca este permisa afisarea notei, aceasta este calculata si afisata
-                        if quiz.showGrade:
+                        if quiz.showGrade == "show_grade":
                             context["grade"] = 0
                             submissions = Submits.objects.filter(student=request.user.username, quiz_id=quiz.id)
                             for entry in submissions:
                                 context["grade"] += entry.points
                         else:
-                            context["grade"] = "not_allowed"
+                            context["grade"] = "hide_grade"
                         return render(request, 'finish.html', context)
                     # incarcarea textului intrebarii si a raspunsurilor pentru afisare
                     context["question"] = Question.objects.get(id=request.user.activeQuestion).text
@@ -164,18 +164,19 @@ def activeQuiz(request):
 # pagina care afiseaza toate quiz-urile completate
 def completedQuizzes(request):
     if request.user.is_authenticated:
-        context = {"quizzes": []}
+        context = {"quizzes": {}, "grades":[]}
         # preluarea id-urilor quiz-urilor finalizate
         finishedQuizzes = request.user.finishedQuizzes.split(';')
         finishedQuizzes.pop()
         print(finishedQuizzes)
         # calculul punctajelor pentru fiecare quiz
-        for quiz_id in finishedQuizzes:
-            context["quizzes"].append(Quiz.objects.get(id=quiz_id).title + "; " + Quiz.objects.get(id=quiz_id).subject)
-            context["grade"] = 0
-            submissions = Submits.objects.filter(student=request.user.username, quiz_id=quiz_id)
+        for index in range(len(finishedQuizzes)):
+            grade = 0
+            submissions = Submits.objects.filter(student=request.user.username, quiz_id=finishedQuizzes[index])
             for entry in submissions:
-                context["grade"] += entry.points
+                grade += entry.points
+            context["quizzes"][(Quiz.objects.get(id=finishedQuizzes[index]).title + "; " + Quiz.objects.get(id=finishedQuizzes[index]).subject)] = grade
+
         return render(request, 'completedQuizzes.html', context)
     else:
         return redirect('error', error_id='no_login')
